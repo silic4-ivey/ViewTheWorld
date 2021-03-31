@@ -346,16 +346,19 @@ public class MainUI extends JFrame implements ActionListener {
 	private void createReport(Result res) {
 		
 //		west.add(outputScrollPane);	
+   		west.setVisible(true);
 	}
 	
 	private void createPieChart(Result res) {
 		
 //		west.add(chartPanel);
+   		west.setVisible(true);
 	}
 	
 	private void createBarChart(Result res) {
 
 //		west.add(chartPanel);
+   		west.setVisible(true);
 	}
 	
 	private void createScatterChart(Result res) {
@@ -416,6 +419,7 @@ public class MainUI extends JFrame implements ActionListener {
 	private void createLineChart(Result res) {
 		
 //		west.add(chartPanel);
+   		west.setVisible(true);
 	}
 	
 	private void createTimeSeries(Result res) {	// add to viewer list and restricted viewers

@@ -18,6 +18,8 @@ public class ComputationServer {
 	public ComputationServer() {
 		this.aFactory = new AnalysisFactory();
 		this.vFactory = new ViewerFactory();
+		
+		this.cAnalysis = aFactory.createAnalysis("CO2 emissions vs Energy use vs PM2.5 air pollution");
 	}
 	
 	public void setAnalysis(String analysisName) {

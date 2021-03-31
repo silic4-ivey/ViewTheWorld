@@ -6,6 +6,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 public class AvgForest implements Analysis {
 	private Reader reader;
+	private String[] parts = {"Average forest area (% of land area)"};
 	
 	public AvgForest() {
 		this.reader = new Reader();

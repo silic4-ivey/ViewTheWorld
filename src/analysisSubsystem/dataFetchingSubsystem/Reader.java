@@ -37,17 +37,14 @@ public class Reader {
 				}
 				sc.close();
 				
-//				JsonParser parse = new JsonParser();
-//				JsonElement jobj = parse.parse(inline);
-				
 				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
 				
 				int size = jsonArray.size();
 
-//				if (jsonArray.get(0).getAsJsonObject().get("value") != null) {
-//				if (!jobj.getAsJsonObject().getAsJsonObject("message").get("value").equals("The provided parameter value is not valid")) {
-				if (size >= 2) {
+				if (size >= 2 && jsonArray.get(1).isJsonArray()) {
 					int sizeOfResults = jsonArray.get(1).getAsJsonArray().size();
+					
+					boolean nullData = true;
 					
 					yearsList = new int[sizeOfResults];
 					value = new double[sizeOfResults];
@@ -56,12 +53,18 @@ public class Reader {
 						yearsList[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 						if (jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
 							value[i] = 0;
-						else
+						else {
 							value[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsInt();
+							nullData = false;
+						}
 					}
 					
 					for (int i = 0; i < yearsList.length; i++) {
 						System.out.println(yearsList[i]);
+					}
+					
+					if (nullData) { 	// if all the data is null, user will be informed that no data is available
+						value = null;
 					}
 				}
 			}

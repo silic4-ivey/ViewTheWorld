@@ -8,7 +8,7 @@ import frontEnd.selectionSubsystem.Selection;
 public class CO2VsEnergyVsPM2 implements Analysis {
 	private Reader reader;
 	private double[][] value;
-	private String[] parts = {"CO2 emissions (metric tons/capita)", "Energy use (kg of oil equivalent/capita)","PM2.5 air pollution (mg/m^3)"};
+	private String[] parts = {"CO2 emissions (metric tons/capita)", "Energy use (kg of oil equivalent/capita)","PM2.5 air pollution (mcg/m^3)"};
 	
 	public CO2VsEnergyVsPM2() {
 		this.reader = new Reader();

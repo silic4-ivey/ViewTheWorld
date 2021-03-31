@@ -6,6 +6,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 public class AvgGovtExpEdu implements Analysis {
 	private Reader reader;
+	private String[] parts = {"Average govt exp on education"};
 	
 	public AvgGovtExpEdu() {
 		this.reader = new Reader();

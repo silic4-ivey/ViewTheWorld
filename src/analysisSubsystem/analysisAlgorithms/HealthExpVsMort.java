@@ -6,7 +6,8 @@ import frontEnd.selectionSubsystem.Selection;
 
 public class HealthExpVsMort implements Analysis {
 	private Reader reader;
-	
+	private String[] parts = {"Health exp/capita", "Infant mortality rate/1000 births"};
+ 	
 	public HealthExpVsMort() {
 		this.reader = new Reader();
 	}

@@ -1,0 +1,6 @@
+Line Chart
+Scatter Chart
+Bar Chart
+Pie Chart
+Time Series
+Report

@@ -144,6 +144,15 @@ public class MainUI extends JFrame implements ActionListener {
 		getContentPane().add(south, BorderLayout.SOUTH);
 		getContentPane().add(east, BorderLayout.EAST);
 		getContentPane().add(west, BorderLayout.WEST);
+		
+		// Populate defaults
+		selection.setSelection("analysisName", analysisList.getSelectedItem().toString());
+		selection.setSelection("analysisIndicators", analysisTypes.get(analysisList.getSelectedItem().toString()));
+		selection.setSelection("countryName", countriesList.getSelectedItem().toString());
+		selection.setSelection("countryCode", countries.get(countriesList.getSelectedItem().toString()));
+		selection.setSelection("yearStart", fromList.getSelectedItem().toString());
+		selection.setSelection("yearEnd", toList.getSelectedItem().toString());
+		
 	}
 	
 	private void scanFiles() {

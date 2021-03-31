@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Selection {
-	private String[] analysisIndicators = {"SE.XPD.TOTL.GD.ZS"};
-	private String analysisName = "Average of Government expenditure on education";
-	private String countryCode = "CAN";
-	private String countryName = "Canada";
-	private int yearStart = 2021;
-	private int yearEnd = 2021;
+	private String[] analysisIndicators;
+	private String analysisName;
+	private String countryCode;
+	private String countryName;
+	private int yearStart;
+	private int yearEnd;
 	private List<String> viewersList = new ArrayList<String>();
 	
 	private HashMap<String,List<String>> restrictedCountries = new HashMap<String,List<String>>();

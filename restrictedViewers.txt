@@ -1,8 +1,8 @@
 CO2 emissions vs Energy use vs PM2.5 air pollution/Pie Chart
 PM2.5 air pollution vs Forest area/Pie Chart
 Ratio of CO2 emissions and GDP per capita/Pie Chart
-Average Forest area/
-Average of Government expenditure on education/
+Average Forest area/Line Chart,Scatter Chart,Bar Chart,Pie Chart,Time Series
+Average of Government expenditure on education/Line Chart,Scatter Chart,Bar Chart,Pie Chart,Time Series
 Ratio of Hospital beds and Current health expenditure/Pie Chart
 Current health expenditure vs Mortality rate/Pie Chart
 Ratio of Government expenditure on education vs Current health expenditure/Pie Chart

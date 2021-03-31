@@ -8,6 +8,6 @@ public class LineChart implements Viewer {
 	@Override
 	public void notify(Result res) {
 		MainUI mainDisplay = MainUI.getInstance();
-		mainDisplay.display("LineChart", res);
+//		mainDisplay.display("LineChart", res);
 	}
 }

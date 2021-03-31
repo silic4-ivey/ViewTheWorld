@@ -8,6 +8,6 @@ public class PieChart implements Viewer {
 	@Override
 	public void notify(Result res) {
 		MainUI mainDisplay = MainUI.getInstance();
-		mainDisplay.display("PieChart", res);
+//		mainDisplay.display("PieChart", res);
 	}
 }

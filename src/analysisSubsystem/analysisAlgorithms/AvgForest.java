@@ -37,7 +37,7 @@ public class AvgForest implements Analysis {
 		
 //		System.out.println(value[0][0]);
 
-		return new Result(sel.getAnalysisName(), parts, value, forest.getYears());
+		return new Result(sel.getAnalysisName(), parts, value, forest.getYears(), sel.getCountryName());
 	}
 
 }

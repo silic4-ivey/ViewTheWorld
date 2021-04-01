@@ -16,6 +16,7 @@ public class RHspBedsAndHealthExp implements Analysis {
 
 	@Override
 	public Result calculate(Selection sel) {
+		System.out.println(sel.getAnalysisIndicators()[0]);
 		Data hspBeds = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
 		Data healthExp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		
@@ -29,6 +30,6 @@ public class RHspBedsAndHealthExp implements Analysis {
 					ratio[0][i] = 0;
 			}
 		}
-		return new Result(sel.getAnalysisName(), parts, ratio, hspBeds.getYears());
+		return new Result(sel.getAnalysisName(), parts, ratio, hspBeds.getYears(), sel.getCountryName());
 	}
 }

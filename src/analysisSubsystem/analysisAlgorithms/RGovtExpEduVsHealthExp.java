@@ -25,7 +25,7 @@ public class RGovtExpEduVsHealthExp implements Analysis {
 				value[0][i] = edu.getValue()[i] / health.getValue()[i];
 			}
 		}
-		return new Result(sel.getAnalysisName(), parts, value, edu.getYears());
+		return new Result(sel.getAnalysisName(), parts, value, edu.getYears(), sel.getCountryName());
 	}
 
 }

@@ -24,7 +24,7 @@ public class HealthExpVsMort implements Analysis {
 			value[0] = healthExp.getValue();
 			value[1] = mort.getValue();
 		}
-		return new Result(sel.getAnalysisName(), parts, value, healthExp.getYears());
+		return new Result(sel.getAnalysisName(), parts, value, healthExp.getYears(), sel.getCountryName());
 	}
 
 }

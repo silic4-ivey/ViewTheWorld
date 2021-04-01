@@ -29,7 +29,7 @@ public class RCO2AndGDP implements Analysis{
 					ratio[0][i] = 0;
 			}
 		}
-		return new Result(sel.getAnalysisName(), parts, ratio, co2.getYears());
+		return new Result(sel.getAnalysisName(), parts, ratio, co2.getYears(), sel.getCountryName());
 	}
 
 }

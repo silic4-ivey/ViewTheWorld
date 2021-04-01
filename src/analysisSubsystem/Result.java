@@ -6,6 +6,7 @@ public class Result {
 	private String[] analysisParts;
 	private double[][] value;
 	private int[] years;
+	private String countryName;
 //	private String[] viewers; // do we rlly need this?
 	
 	public Result() {
@@ -15,11 +16,12 @@ public class Result {
 		this.years = new int[0];
 	}
 	
-	public Result(String aName, String[] parts, double[][] val, int[] yrs) {
+	public Result(String aName, String[] parts, double[][] val, int[] yrs, String country) {
 		this.analysisName = aName;
 		this.analysisParts = parts;
 		this.value = val;
 		this.years = yrs;
+		this.countryName = country;
 	}
 	
 	public void setResult(Result r) {
@@ -30,6 +32,10 @@ public class Result {
 	
 	public String getAnalysisName() {
 		return this.analysisName;
+	}
+	
+	public String getCountryName() {
+		return this.countryName;
 	}
 	
 	public String[] getAnalysisParts() {

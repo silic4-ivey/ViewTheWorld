@@ -30,7 +30,7 @@ public class AvgGovtExpEdu implements Analysis {
 		}
 		value[0][0] = average/govExp.getValue().length/100;
 		
-		return new Result(sel.getAnalysisName(),parts,value,govExp.getYears());
+		return new Result(sel.getAnalysisName(),parts,value,govExp.getYears(),sel.getCountryName());
 	}
 
 }

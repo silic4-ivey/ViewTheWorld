@@ -25,7 +25,7 @@ public class PM2VsForest implements Analysis{
 			value[1] = forest.getValue();
 		}
 		
-		return new Result(sel.getAnalysisName(), parts, value, pm2V.getYears());
+		return new Result(sel.getAnalysisName(), parts, value, pm2V.getYears(), sel.getCountryName());
 	}
 
 }

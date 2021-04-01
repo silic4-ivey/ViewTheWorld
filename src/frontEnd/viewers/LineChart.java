@@ -56,7 +56,7 @@ public class LineChart implements Viewer {
 		
 		
 		lineChart.getLegend().setFrame(BlockBorder.NONE);
-		lineChart.setTitle(new TextTitle(res.getAnalysisName()));
+		lineChart.setTitle(new TextTitle(title));
 		
 		ChartPanel chartPanel = new ChartPanel(lineChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));

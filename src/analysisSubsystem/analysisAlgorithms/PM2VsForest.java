@@ -20,7 +20,7 @@ public class PM2VsForest implements Analysis{
 		Data forest = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 
 		if (pm2V.getValue() != null && forest.getValue() != null) {
-			value = new double[2][Math.min(pm2V.getValue().length, forest.getValue().length)];
+			value = new double[2][pm2V.getValue().length];
 			value[0] = pm2V.getValue();
 			value[1] = forest.getValue();
 		}

@@ -20,7 +20,7 @@ public class RGovtExpEduVsHealthExp implements Analysis {
 		
 		double[][] value = null;
 		if (edu.getValue() != null && health.getValue() != null) {
-			value = new double[2][Math.min(edu.getValue().length, health.getValue().length)];
+			value = new double[2][edu.getValue().length];
 			value[0] = edu.getValue();
 			value[1] = health.getValue();
 		}

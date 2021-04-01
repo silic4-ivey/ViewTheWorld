@@ -143,7 +143,6 @@ public class MainUI extends JFrame implements ActionListener {
 		selection.setSelection("addViewer","Bar Chart");
 		selection.setSelection("addViewer","Report");
 		
-		//uncomment when finished ^^
 		//figure out how to display a pie chart as an example??
 	}
 	

@@ -22,21 +22,14 @@ public class BarChart implements Viewer {
 	@Override
 	public void notify(Result res) {
 		DefaultCategoryDataset dataset[] = new DefaultCategoryDataset[res.getValue().length];
-		
-//		dataset.setValue(5.6, "Mortality/1000 births", "2018");
 
-		
 		for (int i = 0; i < dataset.length; i++) {
 			dataset[i] = new DefaultCategoryDataset();
-//			double d = 0;
 			for (int j = 0; j < res.getValue()[i].length; j++) {
 				String year = Integer.toString(res.getYears()[j]);
 				System.out.println("now for years\n" + year);
 				dataset[i].setValue(res.getValue()[i][j],res.getAnalysisParts()[i].toString(),year);
-//				d +=res.getValue()[i][j];
 			}
-//			averages[i] = d/(res.getValue()[i].length);
-//			datasets[i].addSeries(series[i]);
 		}
 		
 		CategoryPlot plot = new CategoryPlot();
@@ -51,8 +44,6 @@ public class BarChart implements Viewer {
 			plot.setRangeAxis(k, new NumberAxis(""));
 			plot.mapDatasetToRangeAxis(k, k);
 		}
-		
-
 		
 		JFreeChart barChart = new JFreeChart("Mortality vs Expenses & Hospital Beds",
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);

@@ -1,9 +1,7 @@
 package frontEnd;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -14,7 +12,6 @@ import java.util.HashMap;
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -23,20 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.DateAxis;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.chart.renderer.xy.XYSplineRenderer;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.data.time.Year;
-
 import analysisSubsystem.ComputationServer;
-import analysisSubsystem.Result;
 import frontEnd.selectionSubsystem.Selection;
 
 
@@ -153,13 +137,14 @@ public class MainUI extends JFrame implements ActionListener {
 		selection.setSelection("yearStart", fromList.getSelectedItem().toString());
 		selection.setSelection("yearEnd", toList.getSelectedItem().toString());		
 
-		selection.setSelection("addViewer","Scatter Chart");		
+//		selection.setSelection("addViewer","Scatter Chart");		
 		selection.setSelection("addViewer","Time Series");
 //		selection.setSelection("addViewer","Line Chart");
-//		selection.setSelection("addViewer","Bar Chart");
+////		selection.setSelection("addViewer","Bar Chart");
 //		selection.setSelection("addViewer","Report");
 		
 		//uncomment when finished ^^
+		//figure out how to display a pie chart as an example??
 	}
 	
 	private void scanFiles() {

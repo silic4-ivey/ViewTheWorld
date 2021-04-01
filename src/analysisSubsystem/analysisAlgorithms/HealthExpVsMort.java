@@ -19,10 +19,16 @@ public class HealthExpVsMort implements Analysis {
 		Data healthExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
 		Data mort = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		
-		if (healthExp.getValue() != null && mort.getValue() != null) {
-			value = new double[2][healthExp.getValue().length];
-			value[0] = healthExp.getValue();
-			value[1] = mort.getValue();
+		value = new double[2][healthExp.getValue().length];
+
+		if (healthExp.getValue() != null || mort.getValue() != null) {
+			if (healthExp.getValue() != null)
+				value[0] = healthExp.getValue();
+			if (mort.getValue() != null)
+				value[1] = mort.getValue();
+		}
+		else {
+			value = null;
 		}
 		return new Result(sel.getAnalysisName(), parts, value, healthExp.getYears(), sel.getCountryName());
 	}

@@ -18,11 +18,15 @@ public class PM2VsForest implements Analysis{
 	public Result calculate(Selection sel) {
 		Data pm2V = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
 		Data forest = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
-
-		if (pm2V.getValue() != null && forest.getValue() != null) {
-			value = new double[2][pm2V.getValue().length];
-			value[0] = pm2V.getValue();
-			value[1] = forest.getValue();
+		value = new double[2][pm2V.getValue().length];
+		if (pm2V.getValue() != null || forest.getValue() != null) {
+			if (pm2V.getValue() != null) 
+					value[0] = pm2V.getValue();
+			if (forest.getValue() != null)
+				value[1] = forest.getValue();
+		}
+		else {
+			value = null;
 		}
 		
 		return new Result(sel.getAnalysisName(), parts, value, pm2V.getYears(), sel.getCountryName());

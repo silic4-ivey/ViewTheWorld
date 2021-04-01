@@ -21,11 +21,12 @@ public class PieChart implements Viewer {
 		final int PIE_VALUE_LOC = 0;
 		
 		var dataset = new DefaultPieDataset(); 
-		dataset.setValue( res.getAnalysisParts()[PIE_VALUE_LOC], res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
-		dataset.setValue("Other", 1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
+		dataset.setValue( res.getAnalysisParts()[PIE_VALUE_LOC] + " %" +(int)(res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]*100), res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
+		dataset.setValue("Other %"+ (int)((1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC])*100), 1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
 		 
 		JFreeChart pieChart = ChartFactory.createPieChart(res.getAnalysisName(),
 		dataset, true, true, false);
+		
 
 		ChartPanel chartPanel = new ChartPanel(pieChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));

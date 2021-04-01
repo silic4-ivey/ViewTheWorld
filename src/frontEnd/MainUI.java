@@ -60,6 +60,8 @@ public class MainUI extends JFrame implements ActionListener {
 	private Vector<String> viewers = new Vector<String>();
 	private Vector<String> years = new Vector<String>();
 	
+	private Vector<JComponent> currentViewers = new Vector<JComponent>();
+	
 	private HashMap<String,String> countries = new HashMap<String,String>();
 	private HashMap<String,String> analysisTypes = new HashMap<String,String>();
 	
@@ -137,13 +139,27 @@ public class MainUI extends JFrame implements ActionListener {
 		getContentPane().add(east, BorderLayout.EAST);
 		getContentPane().add(west, BorderLayout.WEST);
 		
+		
 		// Populate defaults
 		selection.setSelection("analysisName", analysisList.getSelectedItem().toString());
 		selection.setSelection("analysisIndicators", analysisTypes.get(analysisList.getSelectedItem().toString()));
+		cServer.setAnalysis(analysisList.getSelectedItem().toString());
+
+		countriesList.setSelectedItem("Australia");		
 		selection.setSelection("countryName", countriesList.getSelectedItem().toString());
 		selection.setSelection("countryCode", countries.get(countriesList.getSelectedItem().toString()));
+		
+		fromList.setSelectedItem("2011");		
 		selection.setSelection("yearStart", fromList.getSelectedItem().toString());
 		selection.setSelection("yearEnd", toList.getSelectedItem().toString());		
+
+		selection.setSelection("addViewer","Scatter Chart");		
+		selection.setSelection("addViewer","Time Series");
+//		selection.setSelection("addViewer","Line Chart");
+//		selection.setSelection("addViewer","Bar Chart");
+//		selection.setSelection("addViewer","Report");
+		
+		//uncomment when finished ^^
 	}
 	
 	private void scanFiles() {
@@ -195,7 +211,6 @@ public class MainUI extends JFrame implements ActionListener {
 		    	  
 		    	  String analysisName = currAnalysis[0];
 		    	  String indicators = currAnalysis[1];
-		    	  //String[] indicators = currAnalysis[1].split(",");
 		    	  
 		    	  analysisNames.add(analysisName);
 		    	  analysisTypes.put(analysisName,indicators);		    	  
@@ -224,32 +239,32 @@ public class MainUI extends JFrame implements ActionListener {
 		System.out.println("An error occurred.");
 		e.printStackTrace();
 		}
-	}
+	}	
 	
-	
-	public static void launchUI() {
+	public void launchUI() {
 		instance.setSize(900, 600);
 		instance.pack();
 		instance.setVisible(true);
 		instance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cServer.doAnalysis(selection);
 	}
 	
 	public void displayErrorMessage(String message) {
 		JOptionPane.showMessageDialog(this, message);
 	}
-	
-	
-	//****initialize selection w proper values when we initialize the system!!
-	
+		
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		// if User selected analysis type
 		if (e.getSource().equals(analysisList)) {
 			System.out.println(analysisList.getSelectedItem());
-			selection.setSelection("analysisName", analysisList.getSelectedItem().toString());
-			selection.setSelection("analysisIndicators", analysisTypes.get(analysisList.getSelectedItem()).toString());
-			cServer.setAnalysis(analysisList.getSelectedItem().toString());
+			if (!selection.getAnalysisName().equals(analysisList.getSelectedItem().toString())) {
+				selection.setSelection("analysisName", analysisList.getSelectedItem().toString());
+				selection.setSelection("analysisIndicators", analysisTypes.get(analysisList.getSelectedItem()).toString());
+				cServer.setAnalysis(analysisList.getSelectedItem().toString());
+				clearViewers();
+			}
 		}
 		
 		// if User selected a country
@@ -259,13 +274,11 @@ public class MainUI extends JFrame implements ActionListener {
 			}
 			else
 				displayErrorMessage("Invalid Country");
-//				JOptionPane.showMessageDialog(this, "Invalid Country");
 		}
 		
 		// if User selected start year
 		if (e.getSource().equals(fromList)) {
 			if (!selection.setSelection("yearStart", fromList.getSelectedItem().toString())){
-//				JOptionPane.showMessageDialog(this, "Must select a start year that precedes the end year");
 				displayErrorMessage("Must select a start year that precedes the end year");
 				Object curr = toList.getSelectedItem(); // to make start year same as end year so its valid
 				fromList.setSelectedItem(curr);
@@ -276,7 +289,6 @@ public class MainUI extends JFrame implements ActionListener {
 		// if User selected end year
 		if (e.getSource().equals(toList)) {
 			if (!selection.setSelection("yearEnd", toList.getSelectedItem().toString())){
-//				JOptionPane.showMessageDialog(this, "Must select an end year that follows the start year");
 				displayErrorMessage("Must select an end year that follows the start year");
 				Object curr = fromList.getSelectedItem();
 				toList.setSelectedItem(curr);
@@ -288,14 +300,12 @@ public class MainUI extends JFrame implements ActionListener {
 		if (e.getSource().equals(add)) {
 			if (!selection.setSelection("addViewer", viewersList.getSelectedItem().toString()))
 				displayErrorMessage("Incompatible viewer type");
-//				JOptionPane.showMessageDialog(this, );
 		}
 		
 		// if User selected remove viewer
 		if (e.getSource().equals(remove)) {
 			if (!selection.setSelection("removeViewer", viewersList.getSelectedItem().toString()))
 				displayErrorMessage("Viewer not in list");
-//				JOptionPane.showMessageDialog(this, "Viewer not in list");
 		}
 		
 		// if User selected the recalculate button
@@ -303,9 +313,24 @@ public class MainUI extends JFrame implements ActionListener {
 			cServer.doAnalysis(selection);
 		}
 	}
-
-	public void display(JComponent panel) {
+	
+	private void clearViewers() {
 		west.setVisible(false);
+		for (JComponent v : currentViewers) {
+			west.remove(v);
+		}
+		while (!selection.getViewersList().isEmpty()) {
+			String view = selection.getViewersList().get(0);
+			selection.setSelection("removeViewer", view.toString());
+			System.out.println("removing " + view);
+		}
+		currentViewers.clear();
+		west.setVisible(true);
+	}
+
+	public void display(JComponent panel) { //maybe add country labels to the diff viewers??
+		west.setVisible(false);
+		currentViewers.add(panel);
 		west.add(panel);
 		west.setVisible(true);
 	}

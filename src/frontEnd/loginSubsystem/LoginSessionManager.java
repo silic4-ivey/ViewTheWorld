@@ -68,8 +68,9 @@ public class LoginSessionManager extends JFrame implements ActionListener {
             String pass = passwordField.getText();
             if (vServer.verify(user, pass)) {
                 this.dispose();
-                JFrame frame = MainUI.getInstance();
-                MainUI.launchUI();
+                MainUI frame = MainUI.getInstance();
+//                MainUI.launchUI();
+                frame.launchUI();
             } 
             else {
                 JOptionPane.showMessageDialog(this, "Invalid Username or Password");

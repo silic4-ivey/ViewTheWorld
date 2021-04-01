@@ -56,8 +56,8 @@ public class Reader {
 						if (jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
 							value[i] = 0;
 						else {
-							value[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsInt();
-							nullData = false;
+							value[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
+							nullData = false;	// if values not all null, then we have either full/partial data
 						}
 					}
 
@@ -67,10 +67,6 @@ public class Reader {
 
 					if (nullData) { 	// if all the data is null, user will be informed that no data is available
 						value = null;
-					}
-
-					for (int i = 0; i < yearsList.length; i++) {
-						System.out.println(yearsList[i] + ":" + value[i]);
 					}
 				}
 			}

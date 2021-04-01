@@ -137,11 +137,11 @@ public class MainUI extends JFrame implements ActionListener {
 		selection.setSelection("yearStart", fromList.getSelectedItem().toString());
 		selection.setSelection("yearEnd", toList.getSelectedItem().toString());		
 
-//		selection.setSelection("addViewer","Scatter Chart");		
+		selection.setSelection("addViewer","Scatter Chart");		
 		selection.setSelection("addViewer","Time Series");
-//		selection.setSelection("addViewer","Line Chart");
-////		selection.setSelection("addViewer","Bar Chart");
-//		selection.setSelection("addViewer","Report");
+		selection.setSelection("addViewer","Line Chart");
+		selection.setSelection("addViewer","Bar Chart");
+		selection.setSelection("addViewer","Report");
 		
 		//uncomment when finished ^^
 		//figure out how to display a pie chart as an example??

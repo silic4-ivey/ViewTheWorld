@@ -24,7 +24,9 @@ public class PieChart implements Viewer {
 		dataset.setValue( res.getAnalysisParts()[PIE_VALUE_LOC] + " " +Math.ceil(res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]*100) + "%", res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
 		dataset.setValue("Other "+ Math.floor((1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC])*100) +"%", 1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
 		 
-		JFreeChart pieChart = ChartFactory.createPieChart(res.getAnalysisName(),
+		String title = res.getAnalysisName() + " in " + res.getCountryName();
+		
+		JFreeChart pieChart = ChartFactory.createPieChart(title,
 		dataset, true, true, false);
 		
 

@@ -38,8 +38,9 @@ public class LineChart implements Viewer {
 			dataset.addSeries(series[k]);
 		}
 
-		
-		JFreeChart lineChart = ChartFactory.createXYLineChart(res.getAnalysisName(), "Year", "", dataset, PlotOrientation.VERTICAL, true, true, false);
+		String title = res.getAnalysisName() + " in " + res.getCountryName();
+
+		JFreeChart lineChart = ChartFactory.createXYLineChart(title, "Year", "", dataset, PlotOrientation.VERTICAL, true, true, false);
 		XYPlot plot = lineChart.getXYPlot();
 		
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();

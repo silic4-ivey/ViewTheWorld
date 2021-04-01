@@ -52,8 +52,10 @@ public class TimeSeries implements Viewer {
 		DateAxis domainAxis = new DateAxis("Year");
 		plot.setDomainAxis(domainAxis);
 		plot.setRangeAxis(new NumberAxis(""));
-			
-		JFreeChart scatterChart = new JFreeChart(res.getAnalysisName(),new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
+		
+		String title = res.getAnalysisName() + " in " + res.getCountryName();
+
+		JFreeChart scatterChart = new JFreeChart(title,new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 	
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));

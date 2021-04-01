@@ -45,7 +45,9 @@ public class BarChart implements Viewer {
 			plot.mapDatasetToRangeAxis(k, k);
 		}
 		
-		JFreeChart barChart = new JFreeChart("Mortality vs Expenses & Hospital Beds",
+		String title = res.getAnalysisName() + " in " + res.getCountryName();
+		
+		JFreeChart barChart = new JFreeChart(title,
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(barChart);

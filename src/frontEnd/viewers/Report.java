@@ -17,8 +17,10 @@ public class Report implements Viewer {
 		MainUI mainDisplay = MainUI.getInstance();
 		
 		StringBuilder builder = new StringBuilder();
-		
-		builder.append(res.getAnalysisName() + "\n");
+
+		String title = res.getAnalysisName() + " in " + res.getCountryName();
+
+		builder.append(title + "\n");
 		builder.append("=".repeat(res.getAnalysisName().length()) + "\n");
 		
 		for (int i = 0; i < res.getYears().length; i++) {

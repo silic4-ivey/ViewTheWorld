@@ -17,7 +17,8 @@ public class AvgForest implements Analysis {
 	
 	@Override
 	public Result calculate(Selection sel) {
-		Data forest = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);		
+		Data forest = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		final int PERCENT_CONVERTER = 100;
 		
 		double sum = 0;
 		
@@ -30,7 +31,7 @@ public class AvgForest implements Analysis {
 				System.out.println(sum);
 			}
 			
-			value [0][0] = sum/forest.getValue().length/100;
+			value [0][0] = sum/forest.getValue().length/PERCENT_CONVERTER;
 
 		}
 		

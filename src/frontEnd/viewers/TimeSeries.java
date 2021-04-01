@@ -49,18 +49,10 @@ public class TimeSeries implements Viewer {
 			plot.mapDatasetToRangeAxis(k, k);
 		}
 		
-//				new XYLineAndShapeRenderer(false, true);
-		
-		
-//		plot.setDataset(0, dataset);
-//		plot.setRenderer(0, itemrenderer1);
-		
 		DateAxis domainAxis = new DateAxis("Year");
 		plot.setDomainAxis(domainAxis);
 		plot.setRangeAxis(new NumberAxis(""));
-		
-//		plot.mapDatasetToRangeAxis(0, 0);// 1st dataset to 1st y-axis
-	
+			
 		JFreeChart scatterChart = new JFreeChart(res.getAnalysisName(),new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 	
 		ChartPanel chartPanel = new ChartPanel(scatterChart);

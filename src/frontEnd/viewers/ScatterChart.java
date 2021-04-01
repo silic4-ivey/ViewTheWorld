@@ -28,18 +28,14 @@ public class ScatterChart implements Viewer {
 		
 		TimeSeries[] series = new TimeSeries[res.getValue().length];
 		TimeSeriesCollection[] datasets = new TimeSeriesCollection[res.getValue().length];
-//		double[] averages = new double[res.getValue().length];
 		
 		for (int i = 0; i < series.length; i++) {
 			datasets[i] = new TimeSeriesCollection();
 			series[i] = new TimeSeries(res.getAnalysisParts()[i]);
-//			double d = 0;
 			for (int j = 0; j < res.getValue()[i].length; j++) {
 				int year = res.getYears()[j];
 				series[i].add(new Year(year), res.getValue()[i][j]);
-//				d +=res.getValue()[i][j];
 			}
-//			averages[i] = d/(res.getValue()[i].length);
 			datasets[i].addSeries(series[i]);
 		}
 		
@@ -55,20 +51,9 @@ public class ScatterChart implements Viewer {
 			plot.mapDatasetToRangeAxis(k, k);
 		}
 		
-//				new XYLineAndShapeRenderer(false, true);
-		
-		
-//		plot.setDataset(0, dataset);
-//		plot.setRenderer(0, itemrenderer1);
-		
 		DateAxis domainAxis = new DateAxis("Year");
 		plot.setDomainAxis(domainAxis);
 		plot.setRangeAxis(new NumberAxis(""));
-		
-//		NumberAxis range = (NumberAxis) plot.getRangeAxis();
-//		range.setRange(0,6000) ;
-		
-//		plot.mapDatasetToRangeAxis(0, 0);// 1st dataset to 1st y-axis
 	
 		JFreeChart scatterChart = new JFreeChart(res.getAnalysisName(),new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 	

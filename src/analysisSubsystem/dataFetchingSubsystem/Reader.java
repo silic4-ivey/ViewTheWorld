@@ -59,13 +59,14 @@ public class Reader {
 						}
 					}
 
-					for (int i = 0; i < yearsList.length; i++) {
-						System.out.println(yearsList[i]);
-					}
-
 					if (nullData) { 	// if all the data is null, user will be informed that no data is available
 						value = null;
+						System.out.println("null!");
 					}
+				}
+				if (size < 2) { 	// no data is available
+					value = null;
+					System.out.println("null!");
 				}
 			}
 

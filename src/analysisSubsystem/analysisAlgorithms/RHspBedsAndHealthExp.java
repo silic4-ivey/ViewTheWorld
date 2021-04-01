@@ -20,8 +20,8 @@ public class RHspBedsAndHealthExp implements Analysis {
 		Data healthExp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		
 		if (hspBeds.getValue() != null && healthExp.getValue() != null) {
-			ratio = new double[1][hspBeds.getValue().length];
-			for (int i = 0; i < hspBeds.getValue().length; i++) {
+			ratio = new double[1][Math.min(hspBeds.getValue().length, healthExp.getValue().length)];
+			for (int i = 0; i < Math.min(hspBeds.getValue().length, healthExp.getValue().length); i++) {
 				if (healthExp.getValue()[i] != 0) {
 					ratio[0][i] = hspBeds.getValue()[i]/(healthExp.getValue()[i]*1000);
 				}

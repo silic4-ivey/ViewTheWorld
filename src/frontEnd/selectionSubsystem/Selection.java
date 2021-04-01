@@ -13,8 +13,8 @@ public class Selection {
 	private String analysisName;
 	private String countryCode;
 	private String countryName;
-	private int yearStart;
-	private int yearEnd;
+	private int yearStart = 2021;
+	private int yearEnd = 2021;
 	private List<String> viewersList = new ArrayList<String>();
 	
 	private HashMap<String,List<String>> restrictedCountries = new HashMap<String,List<String>>();
@@ -129,7 +129,10 @@ public class Selection {
 		}
 	}
 
-	private boolean validateCountry(String country) {		
+	private boolean validateCountry(String country) {	
+//		System.out.println(restrictedCountries.get("CO2 emissions vs Energy use vs PM2.5 air pollution"));
+//		System.out.println(analysisName);
+//		System.out.println(restrictedCountries.get(analysisName));
 		if (!restrictedCountries.get(analysisName).isEmpty() && restrictedCountries.get(analysisName).contains(country)) 
 			return false;
 		else {

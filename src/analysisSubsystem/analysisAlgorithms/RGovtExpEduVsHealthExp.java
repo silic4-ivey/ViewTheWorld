@@ -20,9 +20,10 @@ public class RGovtExpEduVsHealthExp implements Analysis {
 		
 		double[][] value = null;
 		if (edu.getValue() != null && health.getValue() != null) {
-			value = new double[2][edu.getValue().length];
-			value[0] = edu.getValue();
-			value[1] = health.getValue();
+			value = new double[1][edu.getValue().length];
+			for (int i = 0; i < edu.getValue().length; i++) {
+				value[0][i] = edu.getValue()[i] / health.getValue()[i];
+			}
 		}
 		return new Result(sel.getAnalysisName(), parts, value, edu.getYears());
 	}

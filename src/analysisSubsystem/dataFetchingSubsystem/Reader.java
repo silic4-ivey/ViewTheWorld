@@ -3,6 +3,7 @@ package analysisSubsystem.dataFetchingSubsystem;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -10,6 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import analysisSubsystem.Data;
+import frontEnd.MainUI;
 import frontEnd.selectionSubsystem.Selection;
 
 public class Reader {
@@ -52,16 +54,37 @@ public class Reader {
 					yearsList = new int[sizeOfResults];
 					value = new double[sizeOfResults];
 					
+					boolean reachedData = false;
+					int firstDataPoint = -1;
+					int lastDataPoint = -1;
+					
 					for (int i = 0; i < sizeOfResults; i++) {
 						yearsList[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
-						if (jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
+						if (jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull()) {
+							// Stop when we run out of data to grab. Just helps remove padding.
+							if (reachedData) {
+								break;
+							}
 							value[i] = 0;
-						else
-							value[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsInt();
+						} else {
+							if (firstDataPoint == -1) {
+								firstDataPoint = i;
+							}
+							value[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
+							reachedData = true;
+							lastDataPoint = i;
+						}
+					}
+					
+					if (firstDataPoint != -1 && lastDataPoint != -1) {
+						yearsList = Arrays.copyOfRange(yearsList, firstDataPoint, lastDataPoint);
+						value = Arrays.copyOfRange(value, firstDataPoint, lastDataPoint);
+					} else {
+						MainUI.getInstance().displayErrorMessage("No data found for that selection");
 					}
 					
 					for (int i = 0; i < yearsList.length; i++) {
-						System.out.println(yearsList[i]);
+						System.out.println(yearsList[i] + ":" + value[i]);
 					}
 				}
 			}

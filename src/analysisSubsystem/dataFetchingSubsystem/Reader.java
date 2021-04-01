@@ -41,7 +41,7 @@ public class Reader {
 
 //				if (jsonArray.get(0).getAsJsonObject().get("value") != null) {
 //				if (!jobj.getAsJsonObject().getAsJsonObject("message").get("value").equals("The provided parameter value is not valid")) {
-				if (size >= 2) {
+				if (size >= 2 && jsonArray.get(1).isJsonArray()) {
 					int sizeOfResults = jsonArray.get(1).getAsJsonArray().size();
 
 					boolean nullData = true;

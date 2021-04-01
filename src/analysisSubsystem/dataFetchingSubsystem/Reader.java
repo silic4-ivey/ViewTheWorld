@@ -17,14 +17,14 @@ import frontEnd.selectionSubsystem.Selection;
 public class Reader {
 	private int[] yearsList;
 	private double[] value;
-	
-	public Data readData(String analysisIndicator, Selection sel) { 
+
+	public Data readData(String analysisIndicator, Selection sel) {
 		System.out.println(analysisIndicator);
-		
+
 		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", sel.getCountryCode(), analysisIndicator, sel.getYearStart(), sel.getYearEnd());
-		
+
 		System.out.println(urlString);
-		
+
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -38,26 +38,21 @@ public class Reader {
 					inline += sc.nextLine();
 				}
 				sc.close();
-				
-//				JsonParser parse = new JsonParser();
-//				JsonElement jobj = parse.parse(inline);
-				
+
 				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
-				
+
 				int size = jsonArray.size();
 
-//				if (jsonArray.get(0).getAsJsonObject().get("value") != null) {
-//				if (!jobj.getAsJsonObject().getAsJsonObject("message").get("value").equals("The provided parameter value is not valid")) {
-				if (size >= 2) {
+				if (size >= 2 && jsonArray.get(1).isJsonArray()) {
 					int sizeOfResults = jsonArray.get(1).getAsJsonArray().size();
-					
+
 					yearsList = new int[sizeOfResults];
 					value = new double[sizeOfResults];
-					
+
 					boolean reachedData = false;
 					int firstDataPoint = -1;
 					int lastDataPoint = -1;
-					
+
 					for (int i = 0; i < sizeOfResults; i++) {
 						yearsList[i] = jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 						if (jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull()) {
@@ -75,16 +70,12 @@ public class Reader {
 							lastDataPoint = i;
 						}
 					}
-					
+
 					if (firstDataPoint != -1 && lastDataPoint != -1) {
 						yearsList = Arrays.copyOfRange(yearsList, firstDataPoint, lastDataPoint);
 						value = Arrays.copyOfRange(value, firstDataPoint, lastDataPoint);
 					} else {
 						MainUI.getInstance().displayErrorMessage("No data found for that selection");
-					}
-					
-					for (int i = 0; i < yearsList.length; i++) {
-						System.out.println(yearsList[i] + ":" + value[i]);
 					}
 				}
 			}
@@ -93,5 +84,5 @@ public class Reader {
 			// TODO Auto-generated catch block e.printStackTrace();
 		}
 		return new Data(value,yearsList);
-	}	
-} 
+	}
+}

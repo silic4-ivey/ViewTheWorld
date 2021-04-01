@@ -17,6 +17,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -142,8 +143,7 @@ public class MainUI extends JFrame implements ActionListener {
 		selection.setSelection("countryName", countriesList.getSelectedItem().toString());
 		selection.setSelection("countryCode", countries.get(countriesList.getSelectedItem().toString()));
 		selection.setSelection("yearStart", fromList.getSelectedItem().toString());
-		selection.setSelection("yearEnd", toList.getSelectedItem().toString());
-		
+		selection.setSelection("yearEnd", toList.getSelectedItem().toString());		
 	}
 	
 	private void scanFiles() {
@@ -304,7 +304,7 @@ public class MainUI extends JFrame implements ActionListener {
 		}
 	}
 
-	public void display(ChartPanel panel) {
+	public void display(JComponent panel) {
 		west.setVisible(false);
 		west.add(panel);
 		west.setVisible(true);

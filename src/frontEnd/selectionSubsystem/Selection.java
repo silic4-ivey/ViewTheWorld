@@ -58,7 +58,7 @@ public class Selection {
 		}
 		
 		
-		// reading valid viewers based on analysis types
+		// reading restricted viewers based on analysis types
 		try {	
 		      File restrictFile = new File("restrictedViewers.txt");
 		      Scanner scan = new Scanner(restrictFile);

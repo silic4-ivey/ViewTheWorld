@@ -6,6 +6,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 public class RGovtExpEduVsHealthExp implements Analysis {
 	private Reader reader;
+	private String[] parts = {"Govt exp on education & Current health exp"};
 	
 	public RGovtExpEduVsHealthExp() {
 		this.reader = new Reader();

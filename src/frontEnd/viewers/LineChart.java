@@ -40,22 +40,15 @@ public class LineChart implements Viewer {
 			for(int i = 0; i < res.getValue()[k].length;i++) {
 				int year = res.getYears()[i];
 				series[k].add(year, res.getValue()[k][i]);
-				
 			}
 			dataset.addSeries(series[k]);
 		}
-		
+
 		
 		JFreeChart lineChart = ChartFactory.createXYLineChart(res.getAnalysisName(), "Year", "", dataset, PlotOrientation.VERTICAL, true, true, false);
 		XYPlot plot = lineChart.getXYPlot();
 		
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-		renderer.setSeriesPaint(0, Color.RED);
-		renderer.setSeriesStroke(0, new BasicStroke(2.0f));
-		renderer.setSeriesPaint(1, Color.BLUE);
-		renderer.setSeriesStroke(1, new BasicStroke(2.0f));
-		renderer.setSeriesPaint(2, Color.GREEN);
-		renderer.setSeriesStroke(2, new BasicStroke(2.0f));
 
 		plot.setRenderer(renderer);
 		plot.setBackgroundPaint(Color.white);

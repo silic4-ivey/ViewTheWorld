@@ -1,21 +1,30 @@
 package analysisSubsystem.analysisAlgorithms;
 
+import analysisSubsystem.Data;
 import analysisSubsystem.Result;
 import analysisSubsystem.dataFetchingSubsystem.Reader;
 import frontEnd.selectionSubsystem.Selection;
 
 public class HealthExpVsMort implements Analysis {
 	private Reader reader;
-	private String[] parts = {"Health exp/capita", "Infant mortality rate/1000 births"};
- 	
+	private double[][] value;
+	private String[] parts = {"Current health expenditure (current US$)", "Mortality rate, infant (per 1,000 live births)"};
+	
 	public HealthExpVsMort() {
 		this.reader = new Reader();
 	}
 	
 	@Override
 	public Result calculate(Selection sel) {
-		// TODO Auto-generated method stub
-		return null;
+		Data healthExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data mort = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+		
+		if (healthExp.getValue() != null && mort.getValue() != null) {
+			value = new double[2][healthExp.getValue().length];
+			value[0] = healthExp.getValue();
+			value[1] = mort.getValue();
+		}
+		return new Result(sel.getAnalysisName(), parts, value, healthExp.getYears());
 	}
 
 }

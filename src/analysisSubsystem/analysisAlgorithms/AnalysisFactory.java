@@ -1,11 +1,16 @@
 package analysisSubsystem.analysisAlgorithms;
 
+/**
+ * Constructs and returns an Analysis object.
+ * @author Joud El-Shawa
+ */
 public class AnalysisFactory {
-	
-	public AnalysisFactory() {
-	
-	}
 
+	/**
+	 * Creates an Analysis object depending on its name. (Factory Design Pattern!)
+	 * @param analysisName is the String containing the name of the Analysis object to be created.
+	 * @return the Analysis object created.
+	 */
 	public Analysis createAnalysis(String analysisName) {
 		switch (analysisName) {
 		case "CO2 emissions vs Energy use vs PM2.5 air pollution":
@@ -29,7 +34,6 @@ public class AnalysisFactory {
 		case "Current health expenditure vs Mortality rate":
 			return new HealthExpVsMort();
 		
-//		case "Ratio of Government expenditure on education vs Current health expenditure":
 		default:	
 			return new RGovtExpEduVsHealthExp();
 		}			

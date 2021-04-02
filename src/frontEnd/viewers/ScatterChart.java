@@ -20,15 +20,23 @@ import org.jfree.data.time.Year;
 import analysisSubsystem.Result;
 import frontEnd.MainUI;
 
+/**
+ * Implements the interface defined by Viewer. Constructs the scatter chart panel based on the Result object.
+ * @author Joud El-Shawa
+ */
 public class ScatterChart implements Viewer {
-
+	
+	/**
+	 * Constructs a scatter chart panel based on the Result object.
+	 * Calls the MainUI's display method and sends it the chart panel created so it can be displayed.
+	 * @param res contains all the information necessary for rendering.
+	 */
 	@Override
-	public void notify(Result res) {
-		MainUI mainDisplay = MainUI.getInstance();
-		
+	public void notify(Result res) {		
 		TimeSeries[] series = new TimeSeries[res.getValue().length];
 		TimeSeriesCollection[] datasets = new TimeSeriesCollection[res.getValue().length];
 		
+		// getting the data from the result object, storing it in series, and linking the series to datasets
 		for (int i = 0; i < series.length; i++) {
 			datasets[i] = new TimeSeriesCollection();
 			series[i] = new TimeSeries(res.getAnalysisParts()[i]);
@@ -57,7 +65,6 @@ public class ScatterChart implements Viewer {
 	
 		String title = res.getAnalysisName() + " in " + res.getCountryName();
 		
-//		JFreeChart scatterChart = new JFreeChart(res.getAnalysisName(),new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 		JFreeChart scatterChart = new JFreeChart(title,new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 	
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
@@ -65,6 +72,7 @@ public class ScatterChart implements Viewer {
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.white);
 		
-		mainDisplay.display(chartPanel);
+		MainUI mainDisplay = MainUI.getInstance();
+		mainDisplay.display(chartPanel); // calls the MainUI's display method so chart panel can be displayed to the User
 	}
 }

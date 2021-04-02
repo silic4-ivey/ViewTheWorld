@@ -8,20 +8,66 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Contains all aspects of analysis selected by the User. Also validates some of them.
+ * @author Joud El-Shawa
+ */
 public class Selection {
-	private String[] analysisIndicators;
+	
+	/**
+	 * Name of the analysis type selected.
+	 */
 	private String analysisName;
-	private String countryCode;
+	
+	/**
+	 * All indicators needed for the analysis type selected.
+	 */
+	private String[] analysisIndicators;
+
+	/**
+	 * Name of the country selected. 
+	 */
 	private String countryName;
+	
+	/**
+	 * Corresponding country code of the country selected.
+	 */
+	private String countryCode;
+
+	/**
+	 * Start year for the analysis.
+	 */
 	private int yearStart = 2021;
+	
+	/**
+	 * End year for the analysis.
+	 */
 	private int yearEnd = 2021;
+	
+	/**
+	 * List of viewers selected by the User.
+	 */
 	private List<String> viewersList = new ArrayList<String>();
 	
+	/**
+	 * Contains analysis names and corresponding list of restricted countries.
+	 */
 	private HashMap<String,List<String>> restrictedCountries = new HashMap<String,List<String>>();
+	
+	/**
+	 * Contains analysis names and corresponding list of restricted viewers.
+	 */
 	private HashMap<String,List<String>> restrictedViewers = new HashMap<String,List<String>>();
 	
+	/**
+	 * Instance of the class since only one selection object is needed. 
+	 */
 	private static Selection instance;
 	
+	/**
+	 * Creates an instance of the class if it does not already exist.
+	 * @return the instance of the Selection class
+	 */
 	public static Selection getInstance() {
 		if (instance == null)
 			instance = new Selection();
@@ -29,10 +75,16 @@ public class Selection {
 		return instance;
 	}
 	
+	/**
+	 * Constructor. Calls the readFiles method to populate the different hashmaps.
+	 */
 	private Selection() {
 		readFiles();
 	}
 	
+	/**
+	 * Reads all files needed for validating aspects of the system. Stores data read in hashmaps.
+	 */
 	private void readFiles() {
 		
 		// reading country restrictions based on analysis types
@@ -83,6 +135,12 @@ public class Selection {
 		}
 	}
 	
+	/**
+	 * Sets the value received to the type that is indicates. Calls a validate method if necessary depending on the type.
+	 * @param type indicates which attribute is being set
+	 * @param value the value that the attribute is trying to be set to
+	 * @return false if value is invalid/incompatible, true otherwise.
+	 */
 	public boolean setSelection(String type, String value) {
 		switch(type) {
 			case "analysisName":
@@ -90,8 +148,6 @@ public class Selection {
 				break;
 			case "analysisIndicators":
 				this.analysisIndicators = value.split(",");
-				System.out.println(value);
-				System.out.println(analysisIndicators[0]);
 				break;
 			case "countryName":
 				return validateCountry(value);
@@ -110,6 +166,11 @@ public class Selection {
 		return true;
 	}
 	
+	/**
+	 * Checks if the viewer is already in the list of viewers.
+	 * @param viewer name of the viewer to be removed from the list of viewers.
+	 * @return true if the list of viewers is not empty and the viewer is in it. false otherwise.
+	 */
 	private boolean validateRemoveViewer(String viewer) {
 		if (!viewersList.isEmpty() && viewersList.contains(viewer)) {
 			viewersList.remove(viewer);
@@ -118,21 +179,27 @@ public class Selection {
 		else return false;
 	}
 
+	/**
+	 * Checks if the viewer is compatible with the analysis type by checking the hashmap of restricted viewers.
+	 * @param viewer name of the viewer to be added to the list
+	 * @return true if viewer is compatible, false otherwise.
+	 */
 	private boolean validateAddViewer(String viewer) {
 		if (restrictedViewers.get(this.analysisName).contains(viewer))
 			return false;
 		else {
 			if (!viewersList.contains(viewer)) 
 					viewersList.add(viewer);
-			System.out.println("valid viewer");
 			return true;
 		}
 	}
 
+	/**
+	 * Checks if country is compatible with the analysis type by checking the hashmap of restricted countries.
+	 * @param country name of the country selected.
+	 * @return true if country is compatible with analysis, false otherwise.
+	 */
 	private boolean validateCountry(String country) {	
-//		System.out.println(restrictedCountries.get("CO2 emissions vs Energy use vs PM2.5 air pollution"));
-//		System.out.println(analysisName);
-//		System.out.println(restrictedCountries.get(analysisName));
 		if (!restrictedCountries.get(analysisName).isEmpty() && restrictedCountries.get(analysisName).contains(country)) 
 			return false;
 		else {
@@ -141,6 +208,12 @@ public class Selection {
 		}
 	}
 	
+	/**
+	 * Checks if the start year precedes the end year. 
+	 * @param start year that is the minimum in the range of years for the analysis
+	 * @param end year that is the maximum in the range of years for the analysis
+	 * @return true if start year is less than or equal to the end year. false otherwise.
+	 */
 	private boolean validateYears(String start, String end) {
 		int startYr = Integer.parseInt(start);
 		int endYr = Integer.parseInt(end);
@@ -154,30 +227,58 @@ public class Selection {
 		}
 	}
 	
+	/**
+	 * Gets the analysis indicators of the analysis type.
+	 * @return string array containing the indicators.
+	 */
 	public String[] getAnalysisIndicators() {
 		return this.analysisIndicators;
 	}
 	
+	/**
+	 * Gets the name of the analysis type.
+	 * @return name of the analysis.
+	 */
 	public String getAnalysisName() {
 		return this.analysisName;
 	}
 	
+	/**
+	 * Gets the country code of the country selected.
+	 * @return country code of the country.
+	 */
 	public String getCountryCode() {
 		return this.countryCode;
 	}
 	
+	/**
+	 * Gets the name of the country selected.
+	 * @return name of the country.
+	 */
 	public String getCountryName() {
 		return this.countryName;
 	}
 	
+	/**
+	 * Gets the start year of the analysis.
+	 * @return the start year.
+	 */
 	public String getYearStart() {
 		return Integer.toString(this.yearStart);
 	}
 	
+	/**
+	 * Gets the end year of the analysis.
+	 * @return the end year.
+	 */
 	public String getYearEnd() {
 		return Integer.toString(this.yearEnd);
 	}
 	
+	/**
+	 * Gets the viewers selected for the analysis.
+	 * @return the list of viewers selected.
+	 */
 	public List<String> getViewersList() {
 		return this.viewersList;
 	}

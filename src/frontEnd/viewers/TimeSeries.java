@@ -18,15 +18,23 @@ import org.jfree.data.time.Year;
 import analysisSubsystem.Result;
 import frontEnd.MainUI;
 
+/**
+ * Implements the interface defined by Viewer. Constructs the time series chart panel based on the Result object.
+ * @author Joud El-Shawa
+ */
 public class TimeSeries implements Viewer {
 
+	/**
+	 * Constructs a time series chart panel based on the Result object.
+	 * Calls the MainUI's display method and sends it the chart panel created so it can be displayed.
+	 * @param res contains all the information necessary for rendering.
+	 */
 	@Override
 	public void notify(Result res) {
-		MainUI mainDisplay = MainUI.getInstance();
-		
 		org.jfree.data.time.TimeSeries[] series = new org.jfree.data.time.TimeSeries[res.getValue().length];
 		TimeSeriesCollection[] datasets = new TimeSeriesCollection[res.getValue().length];
 		
+		// getting data from the Result object and putting it into series and datasets
 		for (int i = 0; i < series.length; i++) {
 			datasets[i] = new TimeSeriesCollection();
 			series[i] = new org.jfree.data.time.TimeSeries(res.getAnalysisParts()[i]);
@@ -62,7 +70,8 @@ public class TimeSeries implements Viewer {
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.white);
 		
-		mainDisplay.display(chartPanel);	
+		MainUI mainDisplay = MainUI.getInstance();
+		mainDisplay.display(chartPanel);	// calls the MainUI's display method so chart panel can be displayed to the User
 	}
 
 }

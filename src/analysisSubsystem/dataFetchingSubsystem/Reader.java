@@ -10,10 +10,29 @@ import com.google.gson.JsonParser;
 import analysisSubsystem.Data;
 import frontEnd.selectionSubsystem.Selection;
 
+/**
+ * Responsible for data acquisition from the World Bank's data base. 
+ * @author Joud El-Shawa
+ */
 public class Reader {
+	
+	/**
+	 * Array of the years that data has been fetched for
+	 */
 	private int[] yearsList;
+	
+	/**
+	 * Array of the data fetched for each year
+	 */
 	private double[] value;
 
+	/**
+	 * Issues an http GET request to get data from the World Bank data base based on the aspects provided. 
+	 * Goes through the json received and adds the values to the value array and years list.
+	 * @param analysisIndicator one of the indicators for the analysis type so it can fetch data for it specifically. 
+	 * @param sel selection object to be used for the http GET request
+	 * @return Data object containing a value array and a years array.
+	 */
 	public Data readData(String analysisIndicator, Selection sel) {
 		System.out.println(analysisIndicator);
 
@@ -39,8 +58,6 @@ public class Reader {
 
 				int size = jsonArray.size();
 
-//				if (jsonArray.get(0).getAsJsonObject().get("value") != null) {
-//				if (!jobj.getAsJsonObject().getAsJsonObject("message").get("value").equals("The provided parameter value is not valid")) {
 				if (size >= 2 && jsonArray.get(1).isJsonArray()) {
 					int sizeOfResults = jsonArray.get(1).getAsJsonArray().size();
 
@@ -59,20 +76,18 @@ public class Reader {
 						}
 					}
 
-					if (nullData) { 	// if all the data is null, user will be informed that no data is available
+					if (nullData) { 	// if all the data is null, value will be set to null instead of all 0s 
 						value = null;
-						System.out.println("null!");
 					}
 				}
-				if (size < 2) { 	// no data is available
+				if (size < 2) { 	// no data is available, so value is null
 					value = null;
-					System.out.println("null!");
 				}
 			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block e.printStackTrace();
 		}
-		return new Data(value,yearsList);
+		return new Data(value,yearsList);	// returns Data object consisting of the value array and years array
 	}
 }

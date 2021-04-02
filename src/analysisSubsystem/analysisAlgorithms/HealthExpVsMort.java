@@ -16,9 +16,12 @@ public class HealthExpVsMort implements Analysis {
 	
 	@Override
 	public Result calculate(Selection sel) {
-		Data healthExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-		Data mort = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
-		
+//		Data healthExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data healthExp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+
+//		Data mort = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+		Data mort = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+
 		value = new double[2][healthExp.getValue().length];
 
 		if (healthExp.getValue() != null || mort.getValue() != null) {

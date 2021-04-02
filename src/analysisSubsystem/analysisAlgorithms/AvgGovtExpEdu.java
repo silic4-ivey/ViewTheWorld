@@ -18,7 +18,9 @@ public class AvgGovtExpEdu implements Analysis {
 	
 	@Override
 	public Result calculate(Selection sel) {
-		Data govExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+//		Data govExp = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data govExp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+
 		double average = 0;
 		value = new double[1][1];
 		if (govExp.getValue() != null) {

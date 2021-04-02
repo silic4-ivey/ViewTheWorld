@@ -16,8 +16,12 @@ public class PM2VsForest implements Analysis{
 	
 	@Override
 	public Result calculate(Selection sel) {
-		Data pm2V = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-		Data forest = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+//		Data pm2V = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data pm2V = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+
+		Data forest = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+
+//		Data forest = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		value = new double[2][pm2V.getValue().length];
 		if (pm2V.getValue() != null || forest.getValue() != null) {
 			if (pm2V.getValue() != null) 

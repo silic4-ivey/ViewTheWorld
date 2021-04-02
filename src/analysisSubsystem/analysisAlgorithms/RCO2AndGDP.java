@@ -44,8 +44,12 @@ public class RCO2AndGDP implements Analysis{
 	public Result calculate(Selection sel) {
 		
 		// Facade Design Pattern! (analysis algorithm knowing which data it needs to fetch from the World Bank database)
-		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-		Data gdp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+//		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data co2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+
+//		Data gdp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+		Data gdp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+
 		
 		if (co2.getValue() != null && gdp.getValue() != null) {
 			ratio = new double[1][co2.getValue().length];

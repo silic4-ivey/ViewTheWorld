@@ -8,7 +8,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 import analysisSubsystem.Data;
-import frontEnd.selectionSubsystem.Selection;
 
 /**
  * Responsible for data acquisition from the World Bank's data base. 
@@ -33,10 +32,22 @@ public class Reader {
 	 * @param sel selection object to be used for the http GET request
 	 * @return Data object containing a value array and a years array.
 	 */
-	public Data readData(String analysisIndicator, Selection sel) {
+	// CHOOSE WHICH ONE TO KEEP 
+//	public Data readData(String analysisIndicator, Selection sel) {
+	/**
+	 * Issues an http GET request to get data from the World Bank data base based on the aspects provided. 
+	 * Goes through the json received and adds the values to the value array and years list.
+	 * @param countryCode code of the country so it can be used in the http GET request.
+	 * @param analysisIndicator one of the indicators for the analysis type so it can fetch data for it specifically.
+	 * @param yearStart string consisting of the start year.
+	 * @param yearEnd string consisting of the end year.
+	 * @return Data object containing a value array and a years array.
+	 */
+	public Data readData(String countryCode, String analysisIndicator, String yearStart, String yearEnd) {
 		System.out.println(analysisIndicator);
 
-		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", sel.getCountryCode(), analysisIndicator, sel.getYearStart(), sel.getYearEnd());
+//		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", sel.getCountryCode(), analysisIndicator, sel.getYearStart(), sel.getYearEnd());
+		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", countryCode, analysisIndicator, yearStart, yearEnd);
 
 		System.out.println(urlString);
 

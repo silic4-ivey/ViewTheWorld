@@ -44,9 +44,12 @@ public class CO2VsEnergyVsPM2 implements Analysis {
 	public Result calculate(Selection sel) {
 		
 		// Facade Design Pattern! (analysis algorithm knowing which data it needs to fetch from the World Bank database)
-		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-		Data energy = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
-		Data pm2 = reader.readData(sel.getAnalysisIndicators()[2].toString(), sel);
+		Data co2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+		Data energy = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+		Data pm2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[2].toString(), sel.getYearStart(), sel.getYearEnd());
+//		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+//		Data energy = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+//		Data pm2 = reader.readData(sel.getAnalysisIndicators()[2].toString(), sel);
 		
 		if (co2.getValue() != null || energy.getValue() != null || pm2.getValue() != null) {
 			value = new double[3][co2.getValue().length];

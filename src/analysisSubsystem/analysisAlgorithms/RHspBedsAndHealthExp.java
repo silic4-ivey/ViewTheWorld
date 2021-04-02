@@ -43,9 +43,14 @@ public class RHspBedsAndHealthExp implements Analysis {
 	 */
 	@Override
 	public Result calculate(Selection sel) {
+		
 		// Facade Design Pattern! (analysis algorithm knowing which data it needs to fetch from the World Bank database)
-		Data hspBeds = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-		Data healthExp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
+
+		//		Data hspBeds = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
+		Data hspBeds = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
+
+		Data healthExp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+//		Data healthExp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		
 		if (hspBeds.getValue() != null && healthExp.getValue() != null) {
 			ratio = new double[1][hspBeds.getValue().length];

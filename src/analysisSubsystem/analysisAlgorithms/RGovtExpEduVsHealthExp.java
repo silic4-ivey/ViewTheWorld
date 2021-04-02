@@ -15,9 +15,12 @@ public class RGovtExpEduVsHealthExp implements Analysis {
 	
 	@Override
 	public Result calculate(Selection sel) {
-		Data edu = reader.readData(sel.getAnalysisIndicators()[0], sel);
-		Data health = reader.readData(sel.getAnalysisIndicators()[1], sel);
+//		Data edu = reader.readData(sel.getAnalysisIndicators()[0], sel);
+		Data edu = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
 		
+//		Data health = reader.readData(sel.getAnalysisIndicators()[1], sel);
+		Data health = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
+
 		double[][] value = null;
 		if (edu.getValue() != null && health.getValue() != null) {
 			value = new double[1][edu.getValue().length];

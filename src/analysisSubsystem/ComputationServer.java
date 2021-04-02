@@ -62,7 +62,8 @@ public class ComputationServer {
 	 */
 	public void doAnalysis(Selection sel) {
 		this.viewersList = sel.getViewersList();
-		this.res = cAnalysis.calculate(sel);		
+		this.res = cAnalysis.calculate(sel);	// Strategy Design Pattern!
+		
 		if (res.getValue() == null) {	// if no data is available
 			MainUI mainDisplay = MainUI.getInstance();
 			mainDisplay.displayErrorMessage("No data available");

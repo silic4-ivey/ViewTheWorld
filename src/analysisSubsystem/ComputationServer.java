@@ -78,7 +78,7 @@ public class ComputationServer {
 	private void notifyViewers() {
 		for (String v : viewersList) {
 			Viewer curr = vFactory.createViewer(v);
-			curr.notify(res); 
+			curr.notify(res); // Observer Design Pattern!
 		}
 	}	
 }

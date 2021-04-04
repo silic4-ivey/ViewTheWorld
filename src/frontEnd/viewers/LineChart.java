@@ -2,6 +2,7 @@ package frontEnd.viewers;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.time.Year;
 
 import javax.swing.BorderFactory;
 
@@ -19,15 +20,26 @@ import org.jfree.data.xy.XYSeriesCollection;
 import analysisSubsystem.Result;
 import frontEnd.MainUI;
 
+/**
+ * Class for creating the line chart viewer used for presenting data.
+ * Implements the viewer interface.
+ * @author Liam Vukasinovic
+ */
 public class LineChart implements Viewer {
 	
+	/**
+	 * Creates line chart based off result object.
+	 * @param res contains information needed for rendering.
+	 */
 	@Override
 	public void notify(Result res) {
 		MainUI mainDisplay = MainUI.getInstance();
 		
+		//Used for holding given data
 		XYSeries[] series = new XYSeries[res.getValue().length];
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		
+		//Puts data from res into the series and dataset variables
 		for (int k = 0; k < res.getValue().length; k++) {
 			series[k] = new XYSeries(res.getAnalysisParts()[k]);
 			
@@ -37,7 +49,8 @@ public class LineChart implements Viewer {
 			}
 			dataset.addSeries(series[k]);
 		}
-
+		
+		//Following code sets up visuals for the chart
 		String title = res.getAnalysisName() + " in " + res.getCountryName();
 
 		JFreeChart lineChart = ChartFactory.createXYLineChart(title, "Year", "", dataset, PlotOrientation.VERTICAL, true, true, false);
@@ -54,10 +67,10 @@ public class LineChart implements Viewer {
 		plot.setDomainGridlinesVisible(true);
 		plot.setDomainGridlinePaint(Color.BLACK);
 		
-		
 		lineChart.getLegend().setFrame(BlockBorder.NONE);
 		lineChart.setTitle(new TextTitle(title));
 		
+		//Creates sizing and appearence for line chart
 		ChartPanel chartPanel = new ChartPanel(lineChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));

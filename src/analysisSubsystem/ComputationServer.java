@@ -10,7 +10,7 @@ import frontEnd.viewers.ViewerFactory;
 
 /**
  * Calls the Analysis object's calculate method and notifies Viewers.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class ComputationServer {
 	

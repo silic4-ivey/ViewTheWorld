@@ -35,7 +35,7 @@ public class HealthExpVsMort implements Analysis {
 	 * Using the given selection object, this method calculates the
 	 * health expenditure vs mortality rate and returns it in new result object
 	 * @param sel Selection object to help retrieve data
-	 * @result Result object containing all data
+	 * @return Result object containing all data
 	 */
 	@Override
 	public Result calculate(Selection sel) {

@@ -24,7 +24,7 @@ public class AvgForest implements Analysis {
 	
 	/**
 	 * Creates a result object storing the result of the analysis type
-	 * @param Selection sel, the selected country analysis type and etc
+	 * @param sel the selected country, analysis type, and etc
 	 * @return Result, the result that contains the calculated analysis
 	 */
 	@Override

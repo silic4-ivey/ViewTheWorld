@@ -10,7 +10,7 @@ public class ViewTheWorld {
 	
 	/**
 	 * Main method. Gets the instance of the LoginSessionManager class and calls its launchLogin method.
-	 * @param args
+	 * @param args usual parameter for main methods.
 	 */
 	public static void main(String[] args) {
 		LoginSessionManager login = LoginSessionManager.getInstance();

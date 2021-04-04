@@ -37,7 +37,7 @@ public class AvgGovtExpEdu implements Analysis {
 	 * Using given selection object, this method calculates the average government
 	 * expenditure on education and returns it in a new result object.
 	 * @param sel Selection object used for getting data from reader
-	 * @result Result containing all data
+	 * @return Result containing all data
 	 */
 	@Override
 	public Result calculate(Selection sel) {

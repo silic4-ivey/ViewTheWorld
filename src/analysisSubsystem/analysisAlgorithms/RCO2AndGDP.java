@@ -49,7 +49,7 @@ public class RCO2AndGDP implements Analysis{
 
 		
 		if (co2.getValue() != null && gdp.getValue() != null) {
-			ratio = new double[1][co2.getValue().length];
+			ratio = new double[1][co2.getYears().length];
 			for (int i = 0; i < co2.getValue().length; i++) {
 				if (gdp.getValue()[i] != 0)
 					ratio[0][i] = co2.getValue()[i]/(gdp.getValue()[i]);
@@ -57,6 +57,9 @@ public class RCO2AndGDP implements Analysis{
 					ratio[0][i] = 0;
 			}
 		}
+		else
+			ratio = null;
+		
 		return new Result(sel.getAnalysisName(), parts, ratio, co2.getYears(), sel.getCountryName());
 	}
 

@@ -38,9 +38,10 @@ public class TimeSeries implements Viewer {
 		for (int i = 0; i < series.length; i++) {
 			datasets[i] = new TimeSeriesCollection();
 			series[i] = new org.jfree.data.time.TimeSeries(res.getAnalysisParts()[i]);
-			for (int j = 0; j < res.getValue()[i].length; j++) {
+			for (int j = 0; j < res.getYears().length; j++) {
 				int year = res.getYears()[j];
-				series[i].add(new Year(year), res.getValue()[i][j]);
+				if (res.getValue()[i] != null) 
+					series[i].add(new Year(year), res.getValue()[i][j]);
 			}
 			datasets[i].addSeries(series[i]);
 		}

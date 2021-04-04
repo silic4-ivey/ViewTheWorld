@@ -43,12 +43,11 @@ public class AvgForest implements Analysis {
 			// Calculate average forest size over the range of years
 			for (int i =0; i<forest.getValue().length; i++) {
 				sum = sum + forest.getValue()[i];
-				System.out.println(sum);
 			}
-			
 			value [0][0] = sum/forest.getValue().length/PERCENT_CONVERTER;  // store average in value
-
 		}
+		else
+			value = null;
 		
 		return new Result(sel.getAnalysisName(), parts, value, forest.getYears(), sel.getCountryName());  // return the result
 	}

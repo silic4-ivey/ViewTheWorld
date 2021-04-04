@@ -26,7 +26,11 @@ public class Report implements Viewer {
 		for (int i = 0; i < res.getYears().length; i++) {
 			builder.append("Year " + res.getYears()[i] + "\n");
 			for (int n = 0; n < res.getValue().length; n++) {
-				builder.append("\t" + res.getAnalysisParts()[n] + " => " + res.getValue()[n][i] + "\n");
+				if (res.getValue()[n] == null) {
+					builder.append("\t" + res.getAnalysisParts()[n] + " => " + 0.0 + "\n");
+				}
+				else
+					builder.append("\t" + res.getAnalysisParts()[n] + " => " + res.getValue()[n][i] + "\n");
 			}
 		}
 		

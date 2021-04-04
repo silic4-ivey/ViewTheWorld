@@ -35,9 +35,12 @@ public class BarChart implements Viewer {
 		// getting the data from the result object and putting into datasets  
 		for (int i = 0; i < dataset.length; i++) {
 			dataset[i] = new DefaultCategoryDataset();
-			for (int j = 0; j < res.getValue()[i].length; j++) {
+			for (int j = 0; j < res.getYears().length; j++) {
 				String year = Integer.toString(res.getYears()[j]);
-				dataset[i].setValue(res.getValue()[i][j],res.getAnalysisParts()[i].toString(),year);
+				if (res.getValue()[i] != null)
+					dataset[i].setValue(res.getValue()[i][j],res.getAnalysisParts()[i].toString(),year);
+				else 
+					dataset[i].setValue(0,res.getAnalysisParts()[i].toString(),year);
 			}
 		}
 		

@@ -49,7 +49,7 @@ public class RHspBedsAndHealthExp implements Analysis {
 		Data healthExp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
 		
 		if (hspBeds.getValue() != null && healthExp.getValue() != null) {
-			ratio = new double[1][hspBeds.getValue().length];
+			ratio = new double[1][hspBeds.getYears().length];
 			for (int i = 0; i < hspBeds.getValue().length; i++) {
 				if (healthExp.getValue()[i] != 0)
 					ratio[0][i] = hspBeds.getValue()[i]/(healthExp.getValue()[i]*1000);
@@ -57,6 +57,9 @@ public class RHspBedsAndHealthExp implements Analysis {
 					ratio[0][i] = 0;
 			}
 		}
+		else
+			ratio = null;
+		
 		return new Result(sel.getAnalysisName(), parts, ratio, hspBeds.getYears(), sel.getCountryName());
 	}
 }

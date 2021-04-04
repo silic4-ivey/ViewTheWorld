@@ -49,17 +49,22 @@ public class CO2VsEnergyVsPM2 implements Analysis {
 		Data pm2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[2].toString(), sel.getYearStart(), sel.getYearEnd());
 
 		if (co2.getValue() != null || energy.getValue() != null || pm2.getValue() != null) {
-			value = new double[3][co2.getValue().length];
+			value = new double[3][Integer.parseInt(sel.getYearEnd()) - Integer.parseInt(sel.getYearStart()) + 1];
 			if (co2.getValue() != null) 
 				value[0] = co2.getValue();
+			else
+				value[0] = null;
 			if (energy.getValue() != null)
 				value[1] = energy.getValue();
+			else 
+				value[1] = null;
 			if (pm2.getValue() != null)
 				value[2] = pm2.getValue();
+			else
+				value[2] = null;
 		}
-		else {
+		else
 			value = null;
-		}
 		
 		return new Result(sel.getAnalysisName(), parts, value, co2.getYears(), sel.getCountryName());
 	}

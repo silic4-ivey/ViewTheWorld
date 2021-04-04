@@ -2,7 +2,6 @@ package frontEnd.viewers;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.time.Year;
 
 import javax.swing.BorderFactory;
 
@@ -43,9 +42,10 @@ public class LineChart implements Viewer {
 		for (int k = 0; k < res.getValue().length; k++) {
 			series[k] = new XYSeries(res.getAnalysisParts()[k]);
 			
-			for(int i = 0; i < res.getValue()[k].length;i++) {
+			for(int i = 0; i < res.getYears().length;i++) {
 				int year = res.getYears()[i];
-				series[k].add(year, res.getValue()[k][i]);
+				if (res.getValue()[k] != null)
+					series[k].add(year, res.getValue()[k][i]);
 			}
 			dataset.addSeries(series[k]);
 		}

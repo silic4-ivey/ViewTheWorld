@@ -7,7 +7,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 public class RGovtExpEduVsHealthExp implements Analysis {
 	private Reader reader;
-	private String[] parts = {"Total Expenditure on Education (% of GDP)", "Total Expenditure on Health (% of GDP)"};
+	private String[] parts = {"Ratio of Exp on Education & Exp on Health (% of GDP)"};
 	
 	public RGovtExpEduVsHealthExp() {
 		this.reader = new Reader();
@@ -27,6 +27,7 @@ public class RGovtExpEduVsHealthExp implements Analysis {
 		}
 		else
 			value = null;
+		
 		return new Result(sel.getAnalysisName(), parts, value, edu.getYears(), sel.getCountryName());
 	}
 

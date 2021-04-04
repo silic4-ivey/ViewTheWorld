@@ -195,7 +195,7 @@ Rwanda	,RWA
 Saint Barth‚lemy	,BLM
 Saint Helena	,SHN
 Saint Kitts and Nevis	,KNA
-Saint Kitts, Nevis and Anguilla	,KNA
+Saint Kitts - Nevis and Anguilla	,KNA
 Saint Lucia	,LCA
 Saint Maarten	,SXM
 Saint Pierre and Miquelon	,SPM

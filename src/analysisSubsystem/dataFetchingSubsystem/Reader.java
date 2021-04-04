@@ -53,6 +53,7 @@ public class Reader {
 				}
 				sc.close();
 
+				@SuppressWarnings("deprecation")
 				JsonArray jsonArray = new JsonParser().parse(inline).getAsJsonArray();
 
 				int size = jsonArray.size();

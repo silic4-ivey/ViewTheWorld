@@ -9,7 +9,7 @@ import frontEnd.viewers.Viewer;
 import frontEnd.viewers.ViewerFactory;
 
 /**
- * Calls the analysis object's calculate method and notifies viewers.
+ * Calls the Analysis object's calculate method and notifies Viewers.
  * @author Joud El-Shawa
  */
 public class ComputationServer {

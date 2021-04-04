@@ -23,7 +23,7 @@ public class CO2VsEnergyVsPM2 implements Analysis {
 	private double[][] value;
 	
 	/**
-	 * Different aspects of the analysis that will be used when rendering viewers for legends.
+	 * Different aspects of the analysis that will be used for legends when rendering viewers.
 	 */
 	private String[] parts = {"CO2 emissions (metric tons/capita)", "Energy use (kg of oil equivalent/capita)","PM2.5 air pollution (mg/m^3)"};
 	
@@ -47,10 +47,7 @@ public class CO2VsEnergyVsPM2 implements Analysis {
 		Data co2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
 		Data energy = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
 		Data pm2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[2].toString(), sel.getYearStart(), sel.getYearEnd());
-//		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
-//		Data energy = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
-//		Data pm2 = reader.readData(sel.getAnalysisIndicators()[2].toString(), sel);
-		
+
 		if (co2.getValue() != null || energy.getValue() != null || pm2.getValue() != null) {
 			value = new double[3][co2.getValue().length];
 			if (co2.getValue() != null) 

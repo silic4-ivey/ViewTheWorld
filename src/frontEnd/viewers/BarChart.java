@@ -6,11 +6,13 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -58,7 +60,7 @@ public class BarChart implements Viewer {
 		
 		JFreeChart barChart = new JFreeChart(title,
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
-
+		
 		ChartPanel chartPanel = new ChartPanel(barChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));

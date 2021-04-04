@@ -17,7 +17,7 @@ public class RCO2AndGDP implements Analysis{
 	private Reader reader;
 	
 	/**
-	 * The aspect of the analysis that will be used when rendering viewers for legends.
+	 * The aspect of the analysis that will be used for legends when rendering viewers.
 	 */
 	private String[] parts = {"CO2 emissions (metric tons/capita) & GDP/capita"};
 	
@@ -44,10 +44,7 @@ public class RCO2AndGDP implements Analysis{
 	public Result calculate(Selection sel) {
 		
 		// Facade Design Pattern! (analysis algorithm knowing which data it needs to fetch from the World Bank database)
-//		Data co2 = reader.readData(sel.getAnalysisIndicators()[0].toString(), sel);
 		Data co2 = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[0].toString(), sel.getYearStart(), sel.getYearEnd());
-
-//		Data gdp = reader.readData(sel.getAnalysisIndicators()[1].toString(), sel);
 		Data gdp = reader.readData(sel.getCountryCode(), sel.getAnalysisIndicators()[1].toString(), sel.getYearStart(), sel.getYearEnd());
 
 		

@@ -16,24 +16,15 @@ import analysisSubsystem.Data;
 public class Reader {
 	
 	/**
-	 * Array of the years that data has been fetched for
+	 * Array of the years that data has been fetched for.
 	 */
 	private int[] yearsList;
 	
 	/**
-	 * Array of the data fetched for each year
+	 * Array of the data fetched for each year.
 	 */
 	private double[] value;
 
-	/**
-	 * Issues an http GET request to get data from the World Bank data base based on the aspects provided. 
-	 * Goes through the json received and adds the values to the value array and years list.
-	 * @param analysisIndicator one of the indicators for the analysis type so it can fetch data for it specifically. 
-	 * @param sel selection object to be used for the http GET request
-	 * @return Data object containing a value array and a years array.
-	 */
-	// CHOOSE WHICH ONE TO KEEP 
-//	public Data readData(String analysisIndicator, Selection sel) {
 	/**
 	 * Issues an http GET request to get data from the World Bank data base based on the aspects provided. 
 	 * Goes through the json received and adds the values to the value array and years list.
@@ -44,9 +35,6 @@ public class Reader {
 	 * @return Data object containing a value array and a years array.
 	 */
 	public Data readData(String countryCode, String analysisIndicator, String yearStart, String yearEnd) {
-		System.out.println(analysisIndicator);
-
-//		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", sel.getCountryCode(), analysisIndicator, sel.getYearStart(), sel.getYearEnd());
 		String urlString = String.format("http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", countryCode, analysisIndicator, yearStart, yearEnd);
 
 		System.out.println(urlString);

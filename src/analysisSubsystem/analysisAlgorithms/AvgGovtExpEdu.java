@@ -24,7 +24,7 @@ public class AvgGovtExpEdu implements Analysis {
 	/**
 	 * Used for legend.
 	 */
-	private String[] parts = {"Average Government expenditure on education (% of GDP)"};
+	private String[] parts = {"Average Government exp on education (% of GDP)"};
 	
 	/**
 	 * Constructor for the class, creates new reader

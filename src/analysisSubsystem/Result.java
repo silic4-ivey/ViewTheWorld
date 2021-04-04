@@ -2,7 +2,7 @@ package analysisSubsystem;
 
 /**
  * Consists of all the data that has been processed and needed for rendering viewers.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class Result {
 	

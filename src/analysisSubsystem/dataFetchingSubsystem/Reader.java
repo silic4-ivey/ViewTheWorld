@@ -11,7 +11,7 @@ import analysisSubsystem.Data;
 
 /**
  * Responsible for data acquisition from the World Bank's data base. 
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class Reader {
 	

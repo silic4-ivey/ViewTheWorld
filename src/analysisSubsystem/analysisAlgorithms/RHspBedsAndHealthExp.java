@@ -8,7 +8,7 @@ import frontEnd.selectionSubsystem.Selection;
 /**
  * Implements the interface defined by Analysis. Uses Reader to get data and computes 
  * the ratio of hospital beds and current health expenditure.  
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class RHspBedsAndHealthExp implements Analysis {
 	

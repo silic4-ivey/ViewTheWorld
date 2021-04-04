@@ -19,7 +19,7 @@ import frontEnd.MainUI;
 
 /**
  * This class is in charge of displaying the Login Panel, collecting the User's credentials, and launching the MainUI.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class LoginSessionManager extends JFrame implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 1L;

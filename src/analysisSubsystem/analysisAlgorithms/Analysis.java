@@ -5,7 +5,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 /**
  * Specifies the interface of the objects that can be manufactured by AnalysisFactory.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public interface Analysis {
 	/**

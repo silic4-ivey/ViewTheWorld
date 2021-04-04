@@ -2,7 +2,7 @@ package frontEnd.viewers;
 
 /**
  * Constructs and returns a Viewer.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class ViewerFactory {
 	

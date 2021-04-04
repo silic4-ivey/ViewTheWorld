@@ -2,7 +2,7 @@ package analysisSubsystem;
 
 /**
  * This class defines the object returned by the Reader when it reads data from the World Bank Database.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class Data {
 

@@ -7,7 +7,7 @@ import frontEnd.selectionSubsystem.Selection;
 
 /**
  * Implements the interface defined by Analysis. Uses Reader to get data and computes the ratio of CO2 and GDP. 
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class RCO2AndGDP implements Analysis{
 	

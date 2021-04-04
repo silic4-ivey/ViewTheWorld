@@ -2,7 +2,7 @@ package analysisSubsystem.analysisAlgorithms;
 
 /**
  * Constructs and returns an Analysis object.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class AnalysisFactory {
 

@@ -8,7 +8,7 @@ import frontEnd.selectionSubsystem.Selection;
 /**
  * Implements the interface defined by Analysis. Computes CO2 vs Energy vs PM2.5 data.
  * Uses Reader to get data and puts them into a value array along with the years. 
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class CO2VsEnergyVsPM2 implements Analysis {
 	

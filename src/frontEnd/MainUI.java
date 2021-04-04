@@ -26,7 +26,7 @@ import frontEnd.selectionSubsystem.Selection;
 /**
  * This class consists of the MainUI that the User uses to select aspects of desired analysis
  * and displays corresponding Viewers once aspects are selected. 
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class MainUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;

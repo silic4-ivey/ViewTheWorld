@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 /**
  * Contains all valid credentials. Used to verify User's credentials.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class VerificationServer {
 	

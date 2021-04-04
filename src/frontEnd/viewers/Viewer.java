@@ -4,7 +4,7 @@ import analysisSubsystem.Result;
 
 /**
  * Specifies the interface of the objects that can be manufactured by ViewerFactory.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public interface Viewer {
 	/**

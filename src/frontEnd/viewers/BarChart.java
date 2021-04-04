@@ -19,7 +19,7 @@ import frontEnd.MainUI;
 
 /**
  * Implements the interface defined by Viewer. Constructs the bar chart panel based on the Result object.
- * @author Joud El-Shawa
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class BarChart implements Viewer {
 	

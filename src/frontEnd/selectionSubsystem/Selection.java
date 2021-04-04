@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Contains all aspects of analysis selected by the User. Also validates some of them.
- * @author Joud El-Shawa
+ * Contains all aspects of analysis selected by the User. Also validates some of them when needed.
+ * @author Joud El-Shawa - jelshawa - 251107864
  */
 public class Selection {
 	

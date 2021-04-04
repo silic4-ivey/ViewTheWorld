@@ -391,7 +391,10 @@ public class MainUI extends JFrame implements ActionListener {
 		
 		// if User selected the recalculate button
 		if (e.getSource().equals(recalculate)) {
-			cServer.doAnalysis(selection);
+			if (selection.setSelection("countryName", countriesList.getSelectedItem().toString()))
+				cServer.doAnalysis(selection);
+			else // handling if User changes analysis and presses Recalculate right away and country is invalid
+				displayErrorMessage("Invalid Country");	
 		}
 	}
 	

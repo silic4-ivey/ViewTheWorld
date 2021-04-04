@@ -10,6 +10,12 @@ import javax.swing.JTextArea;
 import analysisSubsystem.Result;
 import frontEnd.MainUI;
 
+/**
+ * Class that is used to create and display a report. Used to represent data in text format.
+ * @author Reese Collins 251080252 rcolli47@uwo.ca
+ * 2021-04-04
+ *
+ */
 public class Report implements Viewer {
 
 	@Override

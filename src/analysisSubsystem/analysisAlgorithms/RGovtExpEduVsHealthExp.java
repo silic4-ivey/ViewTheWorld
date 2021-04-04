@@ -5,6 +5,13 @@ import analysisSubsystem.Result;
 import analysisSubsystem.dataFetchingSubsystem.Reader;
 import frontEnd.selectionSubsystem.Selection;
 
+/**
+ * Class that is used to request data from the Reader and analyze the selection in terms of the 
+ * ratio of total government expenditure on education vs expenditure on health.
+ * @author Reese Collins 251080252 rcolli47@uwo.ca
+ * 2021-04-04
+ *
+ */
 public class RGovtExpEduVsHealthExp implements Analysis {
 	private Reader reader;
 	private String[] parts = {"Ratio of Exp on Education & Exp on Health (% of GDP)"};

@@ -337,12 +337,13 @@ public class MainUI extends JFrame implements ActionListener {
 		
 		// if User selected analysis type
 		if (e.getSource().equals(analysisList)) {
-			// if new analysis type is selected, stores new values and clears viewers
+			// if new analysis type is selected, stores new values and clears viewers from selection and panel
 			if (!selection.getAnalysisName().equals(analysisList.getSelectedItem().toString())) {	
 				selection.setSelection("analysisName", analysisList.getSelectedItem().toString());
 				selection.setSelection("analysisIndicators", analysisTypes.get(analysisList.getSelectedItem()).toString());
 				cServer.setAnalysis(analysisList.getSelectedItem().toString());
 				clearViewers();
+				selection.clearViewersList();
 			}
 		}
 		
@@ -391,24 +392,22 @@ public class MainUI extends JFrame implements ActionListener {
 		
 		// if User selected the recalculate button
 		if (e.getSource().equals(recalculate)) {
-			if (selection.setSelection("countryName", countriesList.getSelectedItem().toString()))
+			if (selection.setSelection("countryName", countriesList.getSelectedItem().toString()))  {
+				clearViewers();
 				cServer.doAnalysis(selection);
+			}
 			else // handling if User changes analysis and presses Recalculate right away and country is invalid
 				displayErrorMessage("Invalid Country");	
 		}
 	}
 	
 	/**
-	 * Removes all current viewers on MainUI panel. Also removes them from Selection.
+	 * Removes all current viewers on MainUI panel. 
 	 */
 	private void clearViewers() {
 		west.setVisible(false);	// to refresh panel
 		for (JComponent v : currentViewers) {
 			west.remove(v);
-		}
-		while (!selection.getViewersList().isEmpty()) {
-			String view = selection.getViewersList().get(0);
-			selection.setSelection("removeViewer", view.toString());
 		}
 		currentViewers.clear();
 		west.setVisible(true);

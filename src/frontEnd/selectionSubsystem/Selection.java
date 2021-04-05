@@ -167,6 +167,13 @@ public class Selection {
 	}
 	
 	/**
+	 * Removes all viewers in list of viewers.
+	 */
+	public void clearViewersList() {
+		this.viewersList.clear();
+	}
+	
+	/**
 	 * Checks if the viewer is already in the list of viewers.
 	 * @param viewer name of the viewer to be removed from the list of viewers.
 	 * @return true if the list of viewers is not empty and the viewer is in it. false otherwise.

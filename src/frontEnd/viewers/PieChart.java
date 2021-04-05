@@ -26,7 +26,8 @@ public class PieChart implements Viewer {
 		final int PIE_VALUE_LOC = 0;
 		
 		var dataset = new DefaultPieDataset();   // create new data set
-		// Set the values on the data set. First point is the data to be displayed then teh second point is the rest of the pie chart
+		
+		// Set the values on the data set. First point is the data to be displayed then the second point is the rest of the pie chart
 		dataset.setValue( res.getAnalysisParts()[PIE_VALUE_LOC] + " " +Math.ceil(res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]*100) + "%", res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
 		dataset.setValue("Other "+ Math.floor((1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC])*100) +"%", 1-res.getValue()[PIE_VALUE_LOC][PIE_VALUE_LOC]);
 		 

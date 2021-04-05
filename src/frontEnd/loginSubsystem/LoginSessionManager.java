@@ -123,7 +123,7 @@ public class LoginSessionManager extends JFrame implements ActionListener, KeyLi
 			login();
 		}
 
-		// If User pressed the showpassword checkbox
+		// If User pressed the showPassword checkbox
 		if (e.getSource() == showPassword) {
 			if (showPassword.isSelected()) 
 				passwordField.setEchoChar((char) 0);	// displays password

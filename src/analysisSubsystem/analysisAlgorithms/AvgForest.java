@@ -36,15 +36,17 @@ public class AvgForest implements Analysis {
 		
 		double sum = 0;
 		
-		if (forest.getValue() != null) {
-			
-			value = new double[1][1];  // intialize value
-			
+		if (forest.getValue() != null) {			
+			value = new double[1][1];  // initialize value
+			double years = forest.getValue().length;
+
 			// Calculate average forest size over the range of years
 			for (int i =0; i<forest.getValue().length; i++) {
 				sum = sum + forest.getValue()[i];
+				if (forest.getValue()[i] == 0)
+					years--;
 			}
-			value [0][0] = sum/forest.getValue().length/PERCENT_CONVERTER;  // store average in value
+			value [0][0] = sum/years/PERCENT_CONVERTER;  // store average in value
 		}
 		else
 			value = null;

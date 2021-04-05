@@ -47,11 +47,13 @@ public class AvgGovtExpEdu implements Analysis {
 		double average = 0;
 		value = new double[1][1];
 		if (govExp.getValue() != null) {
-			
+			double years = govExp.getValue().length;
 			for (int k = 0; k < govExp.getValue().length;k++) {
 				average = average + govExp.getValue()[k];
+				if (govExp.getValue()[k] == 0) 
+					years--;
 			}
-			value[0][0] = average/govExp.getValue().length/100;
+			value[0][0] = average/years/100;
 		}
 		else 
 			value = null;

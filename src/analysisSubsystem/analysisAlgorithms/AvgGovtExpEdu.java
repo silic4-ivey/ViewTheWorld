@@ -49,7 +49,7 @@ public class AvgGovtExpEdu implements Analysis {
 		if (govExp.getValue() != null) {
 			
 			for (int k = 0; k < govExp.getValue().length;k++) {
-				average += average + govExp.getValue()[k];
+				average = average + govExp.getValue()[k];
 			}
 			value[0][0] = average/govExp.getValue().length/100;
 		}

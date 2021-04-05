@@ -9,7 +9,7 @@ David Tkachuk
 
 To run:
 Go to the frontEnd package, right-click on the ViewTheWorld class, and click Run As > Java Application.
-Enter the username "a" and password "a" and click Sumbit! The MainUI window will open with intialized data.
+Enter the username "a" and password "a" and click Submit! The MainUI window will open with intialized data.
 
 The latest version of Eclipse (2021-03) is recommended to run the system. 
 

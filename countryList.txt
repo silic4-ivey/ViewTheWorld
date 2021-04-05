@@ -44,8 +44,8 @@ Central African Rep.	,CAF
 Chad	,TCD
 Chile	,CHL
 China	,CHN
-China, Hong Kong SAR	,HKG
-China, Macao SAR	,MAC
+China - Hong Kong SAR	,HKG
+China - Macao SAR	,MAC
 Christmas Isds	,CXR
 Cocos Isds	,CCK
 Colombia	,COL
